@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <title>스파르타코딩클럽 | 팬명록</title>
+    <style>
+        .mytitle{
+            width: 100%;
+            height:350px;
+            color:white;
+
+            /*3줄 세트*/
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url("https://cdn.ize.co.kr/news/photo/202109/50077_60032_1142.jpg");
+            background-position: center;
+            background-size: cover;
+
+            /*4줄 세트*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mytitle > h1{
+            text-align: center;
+        }
+        .mypost{
+            max-width: 500px;
+            width: 95%;
+            margin: 20px auto 0px auto;
+            box-shadow: 0px 0px 3px 0px gray;
+            padding:20px;
+        }
+        .mybtn{
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .card{
+            max-width: 500px;
+            width: 95%;
+            margin: 20px auto 0px auto;
+        }
+    </style>
+    <script>
+        //자동으로 구현, 내가 따로 버튼을 클릭하지 않아도 알아서 바뀐다.
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/cheongju",
+                data: {},
+                success: function(response){
+                    let temp = response['temp']
+                    $('#text-temp').text(temp)
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="mytitle">
+        <h1>신사와 아가씨 <br>드라마📺팬명록</br></h1>
+        <p>현재기온 : <span id="text-temp"></span>도</p>
+    </div>
+    <div class="mypost">
+        <div class="form-floating mb-3">
+            <input type="URL" class="form-control" id="floatingInput" placeholder="">
+            <label for="floatingInput">닉네임</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height:100px"></textarea>
+            <label for="floatingTextarea">응원댓글</label>
+        </div>
+        <div class="mybtn">
+            <button type="button" class="btn btn-dark">응원남기기</button>
+        </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>단단이 너무 귀여워~</p>
+          <footer class="blockquote-footer">뿜뿜이</footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>저 아줌마 왜 저래?!?</p>
+          <footer class="blockquote-footer">흥흥이</footer>
+        </blockquote>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>회장님과 단단이 잘 됐으면 좋겠다</p>
+          <footer class="blockquote-footer">행복이</footer>
+        </blockquote>
+      </div>
+    </div>
+</body>
+
+</html>
